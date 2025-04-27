@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #baf3c2;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+.checkboxes {
+    margin: 20px 0;
+}
+
+button {
+    background: #66c9f7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background: #0d4f78;
+}
+
+#resultado {
+    margin-top: 20px;
+    text-align: center;
+}

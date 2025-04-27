@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hill Climbing - TSP</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Selecciona las ciudades</h1>
+        <form id="formCiudades">
+            <div class="checkboxes">
+                {% for ciudad in ciudades %}
+                    <label><input type="checkbox" name="ciudades" value="{{ ciudad }}"> {{ ciudad }}</label><br>
+                {% endfor %}
+            </div>
+            <button type="submit">Calcular Ruta Óptima</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        document.getElementById('formCiudades').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const seleccionadas = [];
+            document.querySelectorAll('input[name="ciudades"]:checked').forEach(el => {
+                seleccionadas.push(el.value);
+            });
+
+            const res = await fetch('/calcular', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ciudades: seleccionadas })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                document.getElementById('resultado').innerHTML = `
+                    <h2>Ruta óptima:</h2>
+                    <p>${data.ruta.join(' ➔ ')}</p>
+                    <h3>Distancia Total: ${data.distancia}</h3>
+                `;
+            } else {
+                alert(data.error);
+            }
+        });
+    </script>
+</body>
+</html>
