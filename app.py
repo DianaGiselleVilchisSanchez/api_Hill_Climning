@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import math
 import random
+import os
 
 app = Flask(__name__)
 
@@ -29,7 +30,6 @@ def evalua_ruta(ruta, coord_local):
         ciudad1 = ruta[i]
         ciudad2 = ruta[i + 1]
         total += distancia(coord_local[ciudad1], coord_local[ciudad2])
-    # Volver al inicio
     total += distancia(coord_local[ruta[-1]], coord_local[ruta[0]])
     return total
 
@@ -75,4 +75,5 @@ def calcular():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
