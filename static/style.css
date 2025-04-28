@@ -1,11 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background: #baf3c2;
+    background: #f591e4;
     padding: 20px;
 }
 
 .container {
-    background: white;
+    background: rgb(206, 106, 197);
     padding: 20px;
     border-radius: 10px;
     max-width: 600px;
@@ -22,7 +22,7 @@ h1, h2, h3 {
 }
 
 button {
-    background: #66c9f7;
+    background: #406e83;
     color: white;
     border: none;
     padding: 10px 20px;
